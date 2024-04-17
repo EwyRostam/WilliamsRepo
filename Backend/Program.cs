@@ -18,9 +18,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CanineContext>(options =>
     options.UseSqlServer(config.GetConnectionString("CanineContext") ?? throw new InvalidOperationException("Connection string 'CanineContext' not found.")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "*",
+                      policy =>
+                      {
+                          policy.WithOrigins("*");
+                      });
+});
 
 var app = builder.Build();
-
+app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                                                        //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins separated with comma
+                    .AllowCredentials());
 
 app.UseSwagger();
 app.UseSwaggerUI();
