@@ -18,12 +18,12 @@ namespace Backend.Controllers
         private readonly BlobServiceClient _blobServiceClient;
         private readonly BlobContainerClient _containerClient;
 
-        public DogsController(CanineContext context, string blobConnectionString, BlobServiceClient blobServiceClient, BlobContainerClient containerClient)
+        public DogsController(IConfiguration config, CanineContext context)
         {
             _context = context;
-            _blobConnectionString = blobConnectionString;
-            _blobServiceClient = blobServiceClient;
-            _containerClient = containerClient;
+            _blobConnectionString = config.GetConnectionString("BlobStorage")!;
+            _blobServiceClient = new BlobServiceClient(_blobConnectionString);
+            _containerClient = _blobServiceClient.GetBlobContainerClient("blobcontainer");
         }
 
 
