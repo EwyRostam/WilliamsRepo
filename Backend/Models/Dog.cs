@@ -7,6 +7,7 @@ public class Dog
     public int Id {get; set;}
     public required string Name {get; set;}
     public int BirthYear {get; set;}
+    public string? ImageUrl {get; set;}
     public DateTime SurrenderAt {get; set;}
 
 }
