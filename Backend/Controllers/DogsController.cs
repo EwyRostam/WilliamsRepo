@@ -47,6 +47,7 @@ namespace Backend.Controllers
                 Name = dog.Name,
                 BirthYear = dog.BirthYear,
                 SurrenderAt = DateTime.Now,
+                ImageUrl = dog.ImageUrl
             };
             
             await _context.Dogs.AddAsync(newDog);
