@@ -1,5 +1,6 @@
 
 using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using Backend.Data;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -50,10 +51,22 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Dog>> PostDog([FromForm]DogDTO dog)
         {
+            string fileName = dog.Name + "_" + Guid.NewGuid().ToString() + ".gif";
+
+            var blobClient = _containerClient.GetBlobClient(fileName);
+
+            using (var stream = dog.ImageUrl.OpenReadStream())
+            {
+                await blobClient.UploadAsync(stream, new BlobHttpHeaders {ContentType = dog.ImageUrl.ContentType}, conditions: null);
+            }
+
+            var imageResponseUrl = blobClient.Uri.ToString();
+
             var newDog = new Dog(){
                 Name = dog.Name,
                 BirthYear = dog.BirthYear,
                 SurrenderAt = DateTime.Now,
+                ImageUrl = imageResponseUrl
             };
             
             await _context.Dogs.AddAsync(newDog);
