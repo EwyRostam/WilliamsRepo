@@ -1,4 +1,5 @@
 
+using Azure.Storage.Blobs;
 using Backend.Data;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,18 @@ namespace Backend.Controllers
     public class DogsController : ControllerBase
     {
         private readonly CanineContext _context;
+        private readonly string _blobConnectionString;
+        private readonly BlobServiceClient _blobServiceClient;
+        private readonly BlobContainerClient _containerClient;
 
-        public DogsController(CanineContext context)
+        public DogsController(CanineContext context, string blobConnectionString, BlobServiceClient blobServiceClient, BlobContainerClient containerClient)
         {
             _context = context;
+            _blobConnectionString = blobConnectionString;
+            _blobServiceClient = blobServiceClient;
+            _containerClient = containerClient;
         }
+
 
         [HttpGet]
 
