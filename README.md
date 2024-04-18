@@ -4,4 +4,4 @@
 # EWY ÄR SÄMST 
 
 
-![]([https://github.com/pile_of_shit.gif](https://github.com/EwyRostam/WilliamsRepo))
+![](https://github.com/EwyRostam/WilliamsRepo/pile_of_shit.gif)
