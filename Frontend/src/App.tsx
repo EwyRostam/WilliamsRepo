@@ -15,10 +15,10 @@ function App() {
     <>
     {isError && <p>An error occured...</p>}
     {isLoading && <p>Loading...</p>}
-    {data && data.map(dog => 
+    {data && data.map(dog =>
       <div>
         <h1>{dog.name}</h1>
-        <img src={dog.imageUrl} alt="Picture of dog" />
+        {dog.imageUrl && <img src={dog.imageUrl} alt="Picture of dog" />}
         <h2>{dog.birthYear}</h2>
       </div>
     )}

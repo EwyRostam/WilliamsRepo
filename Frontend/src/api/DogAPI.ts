@@ -5,7 +5,7 @@ type Dog = {
 }
 
 
-const URL_BASE = "http://http://localhost:5092/Dogs";
+const URL_BASE = "http://localhost:5092/Dogs";
 const headers = {'Content-type': "application/json; charset=UTF-8"}
 
 export const getAllDogs = async (): Promise<Dog[]> => {
