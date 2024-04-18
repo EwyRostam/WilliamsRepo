@@ -48,7 +48,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Dog>> PostDog(DogDTO dog)
+        public async Task<ActionResult<Dog>> PostDog([FromForm]DogDTO dog)
         {
             var newDog = new Dog(){
                 Name = dog.Name,
