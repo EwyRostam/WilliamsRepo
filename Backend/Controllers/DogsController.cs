@@ -40,14 +40,12 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Dog>> PostDog(Dog dog)
+        public async Task<ActionResult<Dog>> PostDog(DogDTO dog)
         {
             var newDog = new Dog(){
-                Id = dog.Id,
                 Name = dog.Name,
                 BirthYear = dog.BirthYear,
                 SurrenderAt = DateTime.Now,
-                ImageUrl = dog.ImageUrl
             };
             
             await _context.Dogs.AddAsync(newDog);
