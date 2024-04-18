@@ -18,7 +18,7 @@ function App() {
     {data && data.map(dog =>
       <div>
         <h1>{dog.name}</h1>
-        {dog.imageUrl && <img src={dog.imageUrl} alt="Picture of dog" />}
+        {dog.imageUrl && <img width="500px" height="500px" src={dog.imageUrl} alt="Picture of dog" />}
         <h2>{dog.birthYear}</h2>
       </div>
     )}
