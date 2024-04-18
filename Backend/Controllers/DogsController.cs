@@ -55,7 +55,7 @@ namespace Backend.Controllers
 
             var blobClient = _containerClient.GetBlobClient(fileName);
 
-            using (var stream = dog.ImageUrl.OpenReadStream())
+            using (var stream = dog.ImageUrl!.OpenReadStream())
             {
                 await blobClient.UploadAsync(stream, new BlobHttpHeaders {ContentType = dog.ImageUrl.ContentType}, conditions: null);
             }
