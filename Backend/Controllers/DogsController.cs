@@ -41,12 +41,12 @@ namespace Backend.Controllers
         }
 
         
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Dog>> GetDog(int id)
-        {
-            var dog = await _context.Dogs.FirstOrDefaultAsync(dog => dog.Id == id);
-            return dog == null ? BadRequest() : dog;
-        }
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Dog>> GetDog(int id)
+        // {
+        //     var dog = await _context.Dogs.FirstOrDefaultAsync(dog => dog.Id == id);
+        //     return dog == null ? BadRequest() : dog;
+        // }
 
         [HttpPost]
         public async Task<ActionResult<Dog>> PostDog([FromForm]DogDTO dog)
@@ -71,7 +71,7 @@ namespace Backend.Controllers
             
             await _context.Dogs.AddAsync(newDog);
             await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetDog), new{id = newDog.Id}, newDog);
+            return CreatedAtAction(nameof(DeleteDog), new{id = newDog.Id}, newDog);
         }
 
         [HttpDelete]
