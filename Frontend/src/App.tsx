@@ -9,9 +9,6 @@ function App() {
     queryKey: ['month'], 
     queryFn: getAllDogs})
 
-    console.log(data);
-
-    
   return (
     <>
     {isError && <p>An error occured...</p>}
