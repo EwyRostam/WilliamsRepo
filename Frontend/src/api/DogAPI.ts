@@ -6,7 +6,6 @@ type Dog = {
 
 
 const URL_BASE = "https://dogcoders.azurewebsites.net/Dogs";
-const headers = {'Content-type': "application/json; charset=UTF-8"}
 
 export const getAllDogs = async (): Promise<Dog[]> => {
     const result = await fetch(URL_BASE).then(result => result.json())
