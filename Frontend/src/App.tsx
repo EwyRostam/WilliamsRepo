@@ -11,6 +11,7 @@ function App() {
 
     console.log(data);
 
+    
   return (
     <>
     {isError && <p>An error occured...</p>}
