@@ -2,15 +2,13 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
     paths:
-      - /Frontend/**
+      -  Frontend/**
       - .github/workflows/azure-static-web-apps-lively-mud-087e8ff03.yml
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    branches: ["main"]
 
 jobs:
   build_and_deploy_job:
