@@ -26,6 +26,9 @@ env:
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - /Backend/**
+      - .github/workflows/main_canine1337.yml
   workflow_dispatch:
 
 permissions:
